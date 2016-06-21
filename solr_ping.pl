@@ -5,11 +5,9 @@ use LWP::Simple qw(get);
 use File::Temp;
 
 my $mailaddr = "vufind-solr-down\@umich.edu";
-#$mailaddr = 'dueberb\@umich.edu';
 my $host = `hostname`;
 chomp $host;
 my %VUFIND = (
-"serve"  => 8026,
 "bibclass" => 8028
 	      );
 
@@ -19,7 +17,6 @@ my %CORES = (
 
 while (my ($name, $port) = each %VUFIND) {
     my $core = $CORES{$name};
-    $core ||= 'biblio';
     my $url = "http://localhost:$port/solr/$core/admin/ping";
     my $problem = solr_problem($url);
     if ($problem) {
