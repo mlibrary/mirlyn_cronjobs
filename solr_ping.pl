@@ -56,6 +56,6 @@ sub solr_problem {
 sub restart_solr {
     my $name = shift;
 
-    `/l/solr-vufind/solrs/solr.sh $name restart`;
+    `/l/solr-vufind/solrs/oldstyle_start_solr.sh $name restart`;
 }
     
